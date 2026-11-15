@@ -1,0 +1,17 @@
+.barre {
+  background: var(--fond-carte);
+  border-bottom: 1px solid var(--bordure);
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.logo { font-size: 20px; letter-spacing: 0.5px; }
+.logo strong { color: #a855f7; }
+
+nav { display: flex; gap: 6px; }
+nav a { padding: 8px 14px; border-radius: 8px; font-size: 14px; color: var(--texte-secondaire); }
+nav a.actif { background: rgba(168, 85, 247, 0.15); color: #d8b4fe; font-weight: 600; }
+nav a.bientot { opacity: 0.45; cursor: not-allowed; } /* pages à venir */
+
+.contenu { max-width: 1200px; margin: 0 auto; padding: 32px; }

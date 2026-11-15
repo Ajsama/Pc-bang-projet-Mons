@@ -1,0 +1,40 @@
+/* Thème global de l'application */
+:root {
+  --fond: #0f1117;
+  --fond-carte: #181b24;
+  --bordure: #2a2f3d;
+  --texte: #e8eaf0;
+  --texte-secondaire: #9aa1b2;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fond);
+  color: var(--texte);
+}
+
+button {
+  background: #a855f7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover { opacity: 0.9; }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+button.danger { background: #3a1d24; color: #fca5a5; }
+button.secondaire { background: var(--bordure); color: var(--texte); }
+
+input, select {
+  background: var(--fond);
+  color: var(--texte);
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 14px;
+}
