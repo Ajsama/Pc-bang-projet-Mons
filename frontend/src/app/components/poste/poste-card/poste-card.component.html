@@ -1,0 +1,21 @@
+<article class="carte {{ poste().statut }}">
+  <div class="ecran">
+    <span class="numero">{{ poste().numero }}</span>
+  </div>
+
+  <div class="infos">
+    <div class="ligne">
+      <span class="nom">PC {{ poste().numero }}</span>
+      <span class="type">{{ poste().type }}</span>
+    </div>
+    <div class="ligne">
+      <span class="statut"><span class="pastille"></span>{{ libelleStatut() }}</span>
+      <span class="tarif">{{ prix() }} / h</span>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button type="button" class="secondaire" (click)="edit.emit(poste().id)">Modifier</button>
+    <button type="button" class="danger" (click)="delete.emit(poste().id)">Supprimer</button>
+  </div>
+</article>

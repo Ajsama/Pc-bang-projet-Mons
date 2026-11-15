@@ -1,0 +1,50 @@
+.entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+h1 { margin: 0; font-size: 28px; }
+.sous-titre { margin: 4px 0 0; color: var(--texte-secondaire); }
+
+/* Couleur associée à chaque statut */
+.DISPONIBLE { --couleur: #22c55e; }
+.OCCUPE { --couleur: #a855f7; }
+.MAINTENANCE { --couleur: #f59e0b; }
+.HORS_SERVICE { --couleur: #6b7280; }
+
+.compteurs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.compteur {
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-left: 4px solid var(--couleur);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.total { font-size: 26px; font-weight: 800; color: var(--couleur); }
+.libelle { color: var(--texte-secondaire); font-size: 14px; }
+
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.vide { color: var(--texte-secondaire); }
+
+.erreur {
+  background: #451a1a;
+  border: 1px solid #ef4444;
+  color: #fecaca;
+  padding: 12px 16px;
+  border-radius: 8px;
+}

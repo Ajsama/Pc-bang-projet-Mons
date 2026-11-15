@@ -1,0 +1,40 @@
+/* Couleur associée à chaque statut */
+.DISPONIBLE { --couleur: #22c55e; }
+.OCCUPE { --couleur: #a855f7; }
+.MAINTENANCE { --couleur: #f59e0b; }
+.HORS_SERVICE { --couleur: #6b7280; }
+
+.carte {
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.carte:hover { transform: translateY(-3px); border-color: var(--couleur); }
+
+/* L'« écran » du PC, éclairé selon le statut */
+.ecran {
+  height: 84px;
+  border-radius: 10px;
+  border: 2px solid var(--couleur);
+  background: radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--couleur) 35%, transparent), transparent 75%), #0b0d13;
+  box-shadow: 0 0 18px -6px var(--couleur);
+  display: grid;
+  place-items: center;
+}
+.numero { font-size: 30px; font-weight: 800; color: var(--couleur); }
+
+.infos { display: flex; flex-direction: column; gap: 6px; }
+.ligne { display: flex; justify-content: space-between; align-items: center; }
+.nom { font-weight: 700; }
+.type { font-size: 11px; color: var(--texte-secondaire); text-transform: uppercase; letter-spacing: 1px; }
+.statut { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--couleur); }
+.pastille { width: 8px; height: 8px; border-radius: 50%; background: var(--couleur); box-shadow: 0 0 8px var(--couleur); }
+.tarif { font-size: 13px; color: var(--texte-secondaire); }
+
+.actions { display: flex; gap: 8px; }
+.actions button { flex: 1; padding: 7px 8px; font-size: 13px; }

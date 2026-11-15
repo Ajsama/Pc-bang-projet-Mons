@@ -1,0 +1,43 @@
+<div class="fond" (click)="annuler.emit()"></div>
+
+<section class="fenetre">
+  <h2>{{ posteAModifier() ? 'Modifier le poste ' + posteAModifier()!.numero : 'Ajouter un poste' }}</h2>
+
+  @if (erreur()) {
+    <p class="erreur">{{ erreur() }}</p>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>
+      Numéro
+      <input type="number" formControlName="numero" min="1" />
+    </label>
+
+    <label>
+      Type
+      <select formControlName="type">
+        <option value="Standard">Standard</option>
+        <option value="Premium">Premium</option>
+      </select>
+    </label>
+
+    <label>
+      Tarif horaire (€)
+      <input type="number" formControlName="tarifHoraire" min="0.5" step="0.5" />
+    </label>
+
+    <label>
+      Statut
+      <select formControlName="statut">
+        @for (s of statuts; track s.valeur) {
+          <option [value]="s.valeur">{{ s.libelle }}</option>
+        }
+      </select>
+    </label>
+
+    <div class="actions">
+      <button type="button" class="secondaire" (click)="annuler.emit()">Annuler</button>
+      <button type="submit" [disabled]="form.invalid">Enregistrer</button>
+    </div>
+  </form>
+</section>

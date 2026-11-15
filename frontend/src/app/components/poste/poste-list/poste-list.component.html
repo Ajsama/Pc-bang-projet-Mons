@@ -1,0 +1,40 @@
+<section class="entete">
+  <div>
+    <h1>Plan de salle</h1>
+    <p class="sous-titre">{{ nombrePostes() }} postes au total</p>
+  </div>
+  <button type="button" (click)="ouvrirFormulaire()">+ Ajouter un poste</button>
+</section>
+
+<section class="compteurs">
+  @for (c of compteurs(); track c.valeur) {
+    <div class="compteur {{ c.valeur }}">
+      <span class="total">{{ c.total }}</span>
+      <span class="libelle">{{ c.libelle }}</span>
+    </div>
+  }
+</section>
+
+@if (erreur()) {
+  <p class="erreur">{{ erreur() }}</p>
+}
+
+<section class="grille">
+  @for (poste of postes(); track poste.id) {
+    <app-poste-card
+      [poste]="poste"
+      (edit)="modifierPoste($event)"
+      (delete)="supprimerPoste($event)"
+    />
+  } @empty {
+    <p class="vide">Aucun poste pour le moment.</p>
+  }
+</section>
+
+@if (afficherFormulaire()) {
+  <app-poste-form
+    [posteAModifier]="posteSelectionne()"
+    (sauvegarde)="onSauvegarde()"
+    (annuler)="fermerFormulaire()"
+  />
+}
