@@ -1,0 +1,73 @@
+// Schéma de la base de données PC Bang Manager
+// Les tables sont ajoutées petit à petit, au fil des fonctionnalités
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Rôle d'un employé : un administrateur est un employé avec le rôle ADMIN
+enum Role {
+  EMPLOYE
+  ADMIN
+}
+
+// Classe mère : informations communes à tous les utilisateurs
+model Utilisateur {
+  id              Int      @id @default(autoincrement())
+  nom             String   @db.VarChar(50)
+  prenom          String   @db.VarChar(50)
+  email           String   @unique @db.VarChar(100)
+  motDePasseHash  String   @map("mot_de_passe_hash") @db.VarChar(255)
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  client  Client?
+  employe Employe?
+
+  @@map("utilisateur")
+}
+
+// Héritage : un Client EST un Utilisateur (même identifiant)
+model Client {
+  utilisateurId     Int       @id @map("id_utilisateur")
+  telephone         String?   @db.VarChar(20)
+  dateFinAbonnement DateTime? @map("date_fin_abonnement") @db.Date
+
+  utilisateur Utilisateur @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
+
+  @@map("client")
+}
+
+// Héritage : un Employe EST un Utilisateur (même identifiant)
+model Employe {
+  utilisateurId Int  @id @map("id_utilisateur")
+  role          Role @default(EMPLOYE)
+
+  utilisateur Utilisateur @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
+
+  @@map("employe")
+}
+
+// État physique d'un poste de jeu
+enum StatutPoste {
+  DISPONIBLE
+  OCCUPE
+  MAINTENANCE
+  HORS_SERVICE
+}
+
+// Poste informatique de la salle
+model Poste {
+  id           Int         @id @default(autoincrement())
+  numero       Int         @unique
+  type         String      @db.VarChar(30)
+  tarifHoraire Decimal     @map("tarif_horaire") @db.Decimal(6, 2)
+  statut       StatutPoste @default(DISPONIBLE)
+
+  @@map("poste")
+}
