@@ -12,6 +12,9 @@ out/
 .env.*
 !.env.example
 
+# Client Prisma généré automatiquement (recréé par « npx prisma generate »)
+backend/src/generated/
+
 # Logs
 *.log
 npm-debug.log*
