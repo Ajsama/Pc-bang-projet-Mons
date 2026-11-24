@@ -83,6 +83,11 @@ npm start                   # interface sur http://localhost:4200
 | POST | `/api/postes` | Création d'un poste |
 | PUT | `/api/postes/:id` | Modification d'un poste |
 | DELETE | `/api/postes/:id` | Suppression d'un poste |
+| GET | `/api/clients` | Liste des clients |
+| GET | `/api/clients/:id` | Détail d'un client |
+| POST | `/api/clients` | Création d'un client (avec son compte utilisateur) |
+| PUT | `/api/clients/:id` | Modification d'un client |
+| DELETE | `/api/clients/:id` | Suppression d'un client |
 
 ## Avancement
 
@@ -91,6 +96,7 @@ npm start                   # interface sur http://localhost:4200
 - [x] Base de données : Prisma + PostgreSQL, premières tables, données de démonstration
 - [x] Mise en place du front-end (Angular)
 - [x] Gestion des postes : plan de salle + CRUD
+- [x] Gestion des clients : liste, recherche + CRUD (mot de passe provisoire haché avec bcrypt)
 - [ ] Authentification et gestion des rôles
 - [ ] Réservations
 - [ ] Check-in, clôture de session et paiement
