@@ -1,0 +1,27 @@
+.entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+h1 { margin: 0; font-size: 28px; }
+.sous-titre { margin: 4px 0 0; color: var(--texte-secondaire); }
+
+.recherche { width: 100%; max-width: 420px; margin-bottom: 24px; padding: 10px 14px; }
+
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.vide { color: var(--texte-secondaire); }
+
+.erreur {
+  background: #451a1a;
+  border: 1px solid #ef4444;
+  color: #fecaca;
+  padding: 12px 16px;
+  border-radius: 8px;
+}

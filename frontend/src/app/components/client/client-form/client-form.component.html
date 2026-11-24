@@ -1,0 +1,42 @@
+<div class="fond" (click)="annuler.emit()"></div>
+
+<section class="fenetre">
+  <h2>
+    {{ clientAModifier() ? 'Modifier ' + clientAModifier()!.prenom + ' ' + clientAModifier()!.nom : 'Ajouter un client' }}
+  </h2>
+
+  @if (erreur()) {
+    <p class="erreur">{{ erreur() }}</p>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="ligne">
+      <label>
+        Prénom
+        <input type="text" formControlName="prenom" maxlength="50" />
+      </label>
+      <label>
+        Nom
+        <input type="text" formControlName="nom" maxlength="50" />
+      </label>
+    </div>
+
+    <label>
+      E-mail
+      <input type="email" formControlName="email" />
+      @if (form.controls.email.touched && form.controls.email.invalid) {
+        <span class="aide">Adresse e-mail invalide.</span>
+      }
+    </label>
+
+    <label>
+      <span>Téléphone <span class="facultatif">(facultatif)</span></span>
+      <input type="tel" formControlName="telephone" placeholder="0470 12 34 56" />
+    </label>
+
+    <div class="actions">
+      <button type="button" class="secondaire" (click)="annuler.emit()">Annuler</button>
+      <button type="submit" [disabled]="form.invalid">Enregistrer</button>
+    </div>
+  </form>
+</section>

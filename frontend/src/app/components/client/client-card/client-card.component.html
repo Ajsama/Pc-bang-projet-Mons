@@ -1,0 +1,20 @@
+<article class="carte">
+  <div class="entete">
+    <span class="avatar">{{ initiales() }}</span>
+    <div>
+      <p class="nom">{{ client().prenom }} {{ client().nom }}</p>
+      <p class="depuis">Client depuis le {{ inscription() }}</p>
+    </div>
+  </div>
+
+  <ul class="infos">
+    <li><span class="etiquette">E-mail</span>{{ client().email }}</li>
+    <li><span class="etiquette">Téléphone</span>{{ client().telephone ?? '—' }}</li>
+    <li><span class="etiquette">Abonnement</span>{{ client().dateFinAbonnement ? 'Actif' : 'Aucun' }}</li>
+  </ul>
+
+  <div class="actions">
+    <button type="button" class="secondaire" (click)="edit.emit(client().id)">Modifier</button>
+    <button type="button" class="danger" (click)="delete.emit(client().id)">Supprimer</button>
+  </div>
+</article>

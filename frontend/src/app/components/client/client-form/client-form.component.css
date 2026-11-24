@@ -1,0 +1,41 @@
+/* Fond sombre derrière la fenêtre */
+.fond {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+.fenetre {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(420px, calc(100% - 32px));
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+  padding: 24px;
+  z-index: 11;
+}
+h2 { margin: 0 0 16px; font-size: 20px; }
+
+form { display: flex; flex-direction: column; gap: 14px; }
+label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--texte-secondaire); }
+
+.actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+
+.erreur {
+  background: #451a1a;
+  border: 1px solid #ef4444;
+  color: #fecaca;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin: 0 0 14px;
+}
+
+.ligne { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ligne label, .ligne input { min-width: 0; }
+.aide { color: #fca5a5; font-size: 12px; }
+.facultatif { font-size: 12px; opacity: 0.7; }

@@ -1,0 +1,39 @@
+<section class="entete">
+  <div>
+    <h1>Clients</h1>
+    <p class="sous-titre">{{ nombreClients() }} clients inscrits</p>
+  </div>
+  <button type="button" (click)="ouvrirFormulaire()">+ Ajouter un client</button>
+</section>
+
+<input
+  class="recherche"
+  type="search"
+  placeholder="Rechercher un client (nom, prénom ou e-mail)…"
+  [value]="recherche()"
+  (input)="recherche.set($any($event.target).value)"
+/>
+
+@if (erreur()) {
+  <p class="erreur">{{ erreur() }}</p>
+}
+
+<section class="grille">
+  @for (client of clientsFiltres(); track client.id) {
+    <app-client-card
+      [client]="client"
+      (edit)="modifierClient($event)"
+      (delete)="supprimerClient($event)"
+    />
+  } @empty {
+    <p class="vide">{{ recherche() ? 'Aucun client ne correspond à la recherche.' : 'Aucun client pour le moment.' }}</p>
+  }
+</section>
+
+@if (afficherFormulaire()) {
+  <app-client-form
+    [clientAModifier]="clientSelectionne()"
+    (sauvegarde)="onSauvegarde()"
+    (annuler)="fermerFormulaire()"
+  />
+}
