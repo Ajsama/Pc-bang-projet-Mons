@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { prisma } from "./lib/prisma";
 import posteRoutes from "./routes/posteRoutes";
+import clientRoutes from "./routes/clientRoutes";
 
 const app = express();
 
@@ -23,5 +24,8 @@ app.get("/api/health", async (_req, res) => {
 
 // Routes des postes (CRUD)
 app.use("/api/postes", posteRoutes);
+
+// Routes des clients (CRUD)
+app.use("/api/clients", clientRoutes);
 
 export default app;
